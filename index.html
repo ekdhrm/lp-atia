@@ -1,275 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+      async
+      defer
+    ></script>
     <title>CV. Agro Teknik Industri Ambisigo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Adamina&family=Cabin:wght@600&family=Livvic:wght@400;600;700&family=Monda:wght@700&family=Poppins:wght@400;600;700&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Adamina&family=Cabin:wght@600&family=Livvic:wght@400;600;700&family=Monda:wght@700&family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        .adamina-regular {
-            font-family: "Adamina", serif;
-            font-weight: 400;
-            font-style: normal;
-        }
+      .adamina-regular {
+        font-family: "Adamina", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
 
-        .livvic-regular {
-            font-family: "Livvic", serif;
-            font-weight: 400;
-            font-style: normal;
-        }
+      .livvic-regular {
+        font-family: "Livvic", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
 
-        .livvic-semibold {
-            font-family: "Livvic", serif;
-            font-weight: 600;
-            font-style: normal;
-        }
+      .livvic-semibold {
+        font-family: "Livvic", serif;
+        font-weight: 600;
+        font-style: normal;
+      }
 
-        .livvic-bold {
-            font-family: "Livvic", serif;
-            font-weight: 700;
-            font-style: normal;
-        }
+      .livvic-bold {
+        font-family: "Livvic", serif;
+        font-weight: 700;
+        font-style: normal;
+      }
 
-        .poppins-regular {
-            font-family: "Poppins", serif;
-            font-weight: 400;
-            font-style: normal;
-        }
+      .poppins-regular {
+        font-family: "Poppins", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
 
-        .poppins-semibold {
-            font-family: "Poppins", serif;
-            font-weight: 600;
-            font-style: normal;
-        }
+      .poppins-semibold {
+        font-family: "Poppins", serif;
+        font-weight: 600;
+        font-style: normal;
+      }
 
-        .poppins-bold {
-            font-family: "Poppins", serif;
-            font-weight: 700;
-            font-style: normal;
-        }
+      .poppins-bold {
+        font-family: "Poppins", serif;
+        font-weight: 700;
+        font-style: normal;
+      }
 
-        .monda {
-            font-family: "Monda", serif;
-            font-optical-sizing: auto;
-            font-weight: 700;
-            font-style: normal;
-        }
+      .monda {
+        font-family: "Monda", serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+      }
 
-        .cabin {
-            font-family: "Cabin", serif;
-            font-optical-sizing: auto;
-            font-weight: 600;
-            font-style: normal;
-            font-variation-settings:
-                "wdth" 100;
-        }
+      .cabin {
+        font-family: "Cabin", serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
 
-        #product-carousel {
-            display: flex;
-            overflow-x: scroll;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
+      #product-carousel {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
 
-        #product-carousel::-webkit-scrollbar {
-            display: none;
-        }
+      #product-carousel::-webkit-scrollbar {
+        display: none;
+      }
 
-        .product-card {
-            scroll-snap-align: center;
-            flex-shrink: 0;
-        }
+      .product-card {
+        scroll-snap-align: center;
+        flex-shrink: 0;
+      }
+
+      .play-btn {
+        width: 25%;
+        height: auto;
+        margin: 0 auto;
+        margin-top: 10%;
+      }
+      
+      .play-btn__svg{
+        transition: 1s; 
+        fill:#7c7c7c; 
+        opacity: .5;
+      }
+      
+      .play-btn:hover .play-btn__svg {
+        fill: #a41d33;
+        opacity: 1;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="flex overflow-hidden flex-col bg-[#265136]">
-        <!-- Header Section with hero design -->
-        <header class="relative flex flex-col w-full text-center text-white min-h-[100vh]">
-            <img loading="lazy" src="assets/img-hero.png" alt="ATIA company background hero image"
-                class="object-fit md:object-cover absolute inset-0 size-full" />
-            <div class="hero-overlay absolute inset-0"></div>
+      <!-- Header Section with hero design -->
+      <header
+        class="relative flex flex-col w-full text-center text-white min-h-[100vh]"
+      >
+        <img
+          class="md:object-cover absolute inset-0 size-full"
+          loading="lazy"
+          src="assets/img-hero.png"
+          alt="ATIA company background hero image"
+        />
 
-            <!-- Navigation -->
-            <nav class="relative flex flex-col md:flex-row justify-between items-center p-4 md:px-8 w-full border border-solid bg-white/5 backdrop-blur-sm border-white/0 shadow-lg z-10"
-                role="navigation">
-                <div class="flex items-center gap-4 md:gap-8">
-                    <img loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/701dba2885ffd2ff3dd30a3686322185c8e7560478d90824072d52ffc3d75930"
-                        alt="ATIA company logo" class="w-[8vw] md:w-[4vw] aspect-square object-contain" />
-                    <div class="text-2xl md:text-3xl adamina-regular">ATIA</div>
-                </div>
+        <!-- Navigation -->
+        <nav
+          class="relative flex flex-col md:flex-row justify-between items-center p-4 md:px-8 w-full border border-solid bg-white/5 backdrop-blur-sm border-white/0 shadow-lg z-10"
+          role="navigation"
+        >
+          <div class="flex items-center gap-4 md:gap-8">
+            <img
+              loading="lazy"
+              src="assets/img-logo.png"
+              alt="ATIA company logo"
+              class="w-[8vw] md:w-[4vw] aspect-square"
+            />
+            <div class="text-2xl md:text-3xl adamina-regular">ATIA</div>
+          </div>
 
-                <div class="flex gap-4 md:gap-8 mt-4 md:mt-0 text-lg md:text-xl poppins-regular">
-                    <a href="#home" class="hover:text-gray-200">Beranda</a>
-                    <a href="#about" class="hover:text-gray-200">Tentang</a>
-                    <a href="#products" class="hover:text-gray-200">Produk</a>
-                    <a href="#contact" class="hover:text-gray-200">Kontak</a>
-                </div>
-            </nav>
+          <div
+            class="flex gap-4 md:gap-8 mt-4 md:mt-0 text-lg md:text-xl poppins-regular"
+          >
+            <a href="#home" class="hover:text-gray-200">Beranda</a>
+            <a href="#about" class="hover:text-gray-200">Tentang</a>
+            <a href="#products" class="hover:text-gray-200">Produk</a>
+            <a href="#contact" class="hover:text-gray-200">Kontak</a>
+          </div>
+        </nav>
 
-            <!-- Hero Content -->
-            <div class="relative flex flex-col items-center justify-center flex-1 px-4 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-[#8CC9BC] livvic-bold">
-                    CV. AGRO TEKNIK<br />
-                    INDUSTRI AMBISIGO
-                </h1>
-                <p class="text-xl md:text-2xl text-white adamina-regular">Perusahaan ATIA</p>
+        <!-- Hero Content -->
+        <div
+          class="relative flex flex-col items-center justify-center flex-1 px-4 text-center"
+        >
+          <h1
+            class="text-4xl md:text-6xl font-bold mb-4 text-[#8CC9BC] livvic-bold"
+          >
+            CV. AGRO TEKNIK<br />
+            INDUSTRI AMBISIGO
+          </h1>
+          <p class="text-xl md:text-2xl text-white adamina-regular">
+            Perusahaan ATIA
+          </p>
+        </div>
+      </header>
+
+      <!-- About Section -->
+      <section id="about" class="bg-[#265136] py-16 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 place-items-center">
+            <div class="relative">
+              <img
+                loading="lazy"
+                src="assets/img-profile.png"
+                alt="Company Profile"
+                class="rounded-lg shadow-lg"
+              />
             </div>
-        </header>
-
-        <!-- About Section -->
-        <section id="about" class="bg-[#265136] py-16 px-4 md:px-8">
-            <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 place-items-center">
-                    <div class="relative">
-                        <img loading="lazy" src="assets/img-profile.png" alt="Company Profile"
-                            class="rounded-lg shadow-lg" />
-                    </div>
-                    <div class="text-white">
-                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 livvic-bold">
-                            Profil Perusahaan
-                        </h2>
-                        <p class="text-lg leading-relaxed poppins-regular">
-                            Perusahaan ATIA Merupakan Perusahaan dibawah naungan PT. Amal
-                            Multi Bisnis Syariah Group (Perusahaan AMBISIGO) yang bergerak
-                            pada bidang Usaha Supplier, Pengolahan dan Pemasaran Hasil
-                            Produksi dan Olahan Pertanian,Perkebunan, Peternakan, Perikanan
-                            dan Kehutanan.
-                        </p>
-                        <p class="text-lg leading-relaxed mt-4 poppins-regular">
-                            Kami menawarkan Kerjasama Keagenan Supplier dan Investasi pada
-                            bidang usaha tersebut melalui Perusahaan AMBISIGO selaku
-                            perusahaan induk. Kami CV. Agro Teknik Industri Ambisigo
-                            (Perusahaan ATIA) Melayani Kebutuhan Para Exportir, Toko,
-                            Perhotelan, Supermarket, Rumah sakit, Lembaga sosial, Pendidikan
-                            dan lainnya yang berkenaan dengan Bidang Pertanian.
-                        </p>
-                    </div>
-                </div>
+            <div class="text-white">
+              <h2
+                class="text-3xl md:text-5xl font-bold text-white mb-4 livvic-bold"
+              >
+                Profil Perusahaan
+              </h2>
+              <p class="text-lg leading-relaxed poppins-regular">
+                Perusahaan ATIA Merupakan Perusahaan dibawah naungan PT. Amal
+                Multi Bisnis Syariah Group (Perusahaan AMBISIGO) yang bergerak
+                pada bidang Usaha Supplier, Pengolahan dan Pemasaran Hasil
+                Produksi dan Olahan Pertanian,Perkebunan, Peternakan, Perikanan
+                dan Kehutanan.
+              </p>
+              <p class="text-lg leading-relaxed mt-4 poppins-regular">
+                Kami menawarkan Kerjasama Keagenan Supplier dan Investasi pada
+                bidang usaha tersebut melalui Perusahaan AMBISIGO selaku
+                perusahaan induk. Kami CV. Agro Teknik Industri Ambisigo
+                (Perusahaan ATIA) Melayani Kebutuhan Para Exportir, Toko,
+                Perhotelan, Supermarket, Rumah sakit, Lembaga sosial, Pendidikan
+                dan lainnya yang berkenaan dengan Bidang Pertanian.
+              </p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Vision & Mission Section -->
-        <section class="flex flex-col p-4 md:p-12 mt-8 w-full text-white bg-[#6D8C54]">
-            <div class="max-w-[90vw] md:max-w-[80vw] mx-auto">
-                <div class="mb-12">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6 monda">VISI</h2>
-                    <p class="text-lg md:text-2xl livvic-regular">
-                        Menjadi Perusahaan Terdepan dalam Agrobisnis dan Agroindustri,
-                        Supplier, Pengolahan dan Pemasaran hasil Pertanian, perkebunan,
-                        Perikanan, Peternakan dan Kehutanan.
-                    </p>
-                </div>
+      <!-- Vision & Mission Section -->
+      <section
+        class="flex flex-col p-4 md:p-12 mt-8 w-full text-white bg-[#6D8C54]"
+      >
+        <div class="max-w-[90vw] md:max-w-[80vw] mx-auto">
+          <div class="mb-12">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 monda">VISI</h2>
+            <p class="text-lg md:text-2xl livvic-regular">
+              Menjadi Perusahaan Terdepan dalam Agrobisnis dan Agroindustri,
+              Supplier, Pengolahan dan Pemasaran hasil Pertanian, perkebunan,
+              Perikanan, Peternakan dan Kehutanan.
+            </p>
+          </div>
 
-                <div>
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6 monda">MISI</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg md:text-2xl livvic-regular">
-                        <div class="space-y-6">
-                            <p>
-                                Berkolaborasi dengan pelaku usaha Kelompok Petani,Usaha Kecil
-                                Menengah (UMKM) untuk menjadi mitra dalam mengembangkan
-                                usahanya di atas.
-                            </p>
-                            <p>
-                                Integrasi dengan sumber penyedia, termasuk memberikan
-                                pelayanan proses pertanian dan pengembangbiakan yang saling
-                                memberdayakan yang adil.
-                            </p>
-                            <p>Memberikan pelayanan yang terbaik kepada konsumen.</p>
-                        </div>
-                        <div class="space-y-6">
-                            <p>
-                                Mengelola hasil produksi Pertanian, Perkebunan ,Perikanan,
-                                Peternakan Dan kehutanan, agar sesuai dengan permintaan Pasar
-                                Lokal dan Global.
-                            </p>
-                            <p>Membantu meningkatkan pendayagunaan petani.</p>
-                            <p>
-                                Menyediakan proses dan hasil pertanian yang memenuhi standar
-                                mutu.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--Products Section -->
-        <section id="products" class="py-16 px-8 md:px-[8.5vw]">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-8 livvic-bold">PRODUK</h2>
-                <p class="text-lg md:text-2xl text-white mb-12 livvic-regular">
-                    Adapun produk yang ditawarkan oleh Perusahaan ATIA adalah hasil
-                    produksi atau olahan dalam bidang perkebunan, pertanian dan peternakan
+          <div>
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 monda">MISI</h2>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg md:text-2xl livvic-regular"
+            >
+              <div class="space-y-6">
+                <p>
+                  Berkolaborasi dengan pelaku usaha Kelompok Petani,Usaha Kecil
+                  Menengah (UMKM) untuk menjadi mitra dalam mengembangkan
+                  usahanya di atas.
                 </p>
-                <div id="product-carousel" class="flex space-x-6 overflow-x-auto pb-4 scroll-smooth">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-1.jpeg" alt="Product 1" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-2.jpeg" alt="Product 2" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-3.jpeg" alt="Product 3" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-4.jpeg" alt="Product 4" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-5.jpeg" alt="Product 5" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-6.jpeg" alt="Product 6" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-7.jpeg" alt="Product 7" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-8.jpeg" alt="Product 8" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-9.jpeg" alt="Product 9" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-10.jpeg" alt="Product 10" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-11.jpeg" alt="Product 11" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-12.jpeg" alt="Product 12" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-13.jpeg" alt="Product 13" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-14.jpeg" alt="Product 14" class="w-full h-60 object-cover" />
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card">
-                        <img src="assets/img-product-15.jpeg" alt="Product 15" class="w-full h-60 object-cover" />
-                    </div>
-                </div>
+                <p>
+                  Integrasi dengan sumber penyedia, termasuk memberikan
+                  pelayanan proses pertanian dan pengembangbiakan yang saling
+                  memberdayakan yang adil.
+                </p>
+                <p>Memberikan pelayanan yang terbaik kepada konsumen.</p>
+              </div>
+              <div class="space-y-6">
+                <p>
+                  Mengelola hasil produksi Pertanian, Perkebunan ,Perikanan,
+                  Peternakan Dan kehutanan, agar sesuai dengan permintaan Pasar
+                  Lokal dan Global.
+                </p>
+                <p>Membantu meningkatkan pendayagunaan petani.</p>
+                <p>
+                  Menyediakan proses dan hasil pertanian yang memenuhi standar
+                  mutu.
+                </p>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Video Section -->
-        <section class="relative h-[80vh] bg-black/50 mt-2">
-            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted
-                poster="/api/placeholder/1920/1080">
-                <source src="assets/vid-idk.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <!-- <div class="relative z-10 flex items-center justify-center h-full">
+      <!--Products Section -->
+      <section id="products" class="py-16 px-8 md:px-[8.5vw]">
+        <div class="max-w-7xl mx-auto">
+          <h2
+            class="text-3xl md:text-5xl font-bold text-white mb-8 livvic-bold"
+          >
+            PRODUK
+          </h2>
+          <p class="text-lg md:text-2xl text-white mb-12 livvic-regular">
+            Adapun produk yang ditawarkan oleh Perusahaan ATIA adalah hasil
+            produksi atau olahan dalam bidang perkebunan, pertanian dan
+            peternakan
+          </p>
+          <div
+            id="product-carousel"
+            class="flex space-x-6 overflow-x-auto pb-4 scroll-smooth"
+          >
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-1.jpeg"
+                alt="Product 1"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-2.jpeg"
+                alt="Product 2"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-3.jpeg"
+                alt="Product 3"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-4.jpeg"
+                alt="Product 4"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-5.jpeg"
+                alt="Product 5"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-6.jpeg"
+                alt="Product 6"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-7.jpeg"
+                alt="Product 7"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-8.jpeg"
+                alt="Product 8"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-9.jpeg"
+                alt="Product 9"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-10.jpeg"
+                alt="Product 10"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-11.jpeg"
+                alt="Product 11"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-12.jpeg"
+                alt="Product 12"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-13.jpeg"
+                alt="Product 13"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-14.jpeg"
+                alt="Product 14"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden w-72 flex-shrink-0 product-card"
+            >
+              <img
+                src="assets/img-product-15.jpeg"
+                alt="Product 15"
+                class="w-full h-60 object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Section -->
+      <section class="relative h-[80vh] bg-black/50 mt-2">
+        <video id="video" class="absolute inset-0 w-full h-full object-cover" controls muted>
+          <source src="assets/vid-idk.mp4" type="video/mp4" />
+        </video>
+        <button
+          id="playButton" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-white/75 rounded-full p-8 hover:bg-white/100 transition-all"
+        >
+            <svg class="w-8 h-8 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>        
+        </button>
+        <!-- <div class="relative z-10 flex items-center justify-center h-full">
         <div class="text-center text-white">
           <h2 class="text-4xl md:text-6xl font-bold mb-4">
             Selamat Datang di ATIA
@@ -277,53 +429,82 @@
           <p class="text-xl md:text-2xl">Mitra Terpercaya dalam Agrobisnis</p>
         </div>
       </div> -->
-        </section>
+      </section>
 
-        <!-- Contact Section -->
-        <section id="contact"
-            class="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 md:p-[5vw] text-white place-items-center">
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 md:p-[5vw] text-white place-items-center"
+      >
+        <div>
+          <h2 class="text-3xl md:text-5xl font-bold mb-[10vh] livvic-bold">
+            HUBUNGI KAMI
+          </h2>
+          <address class="not-italic text-lg space-y-6">
+            <div class="mb-[6vh]">
+              <h3 class="text-slate-400 font-bold uppercase mb-2 cabin">
+                PHONE
+              </h3>
+              <div class="space-y-2 livvic-regular">
+                <a href="tel:+6281245463322" class="hover:underline block"
+                  >+62 812-4546-3322</a
+                >
+                <a href="tel:+6281147333322" class="hover:underline block"
+                  >+62 811-4733-332</a
+                >
+              </div>
+            </div>
+
             <div>
-                <h2 class="text-3xl md:text-5xl font-bold mb-[10vh] livvic-bold">HUBUNGI KAMI</h2>
-                <address class="not-italic text-lg space-y-6">
-                    <div class="mb-[6vh]">
-                        <h3 class="text-slate-400 font-bold uppercase mb-2 cabin">PHONE</h3>
-                        <div class="space-y-2 livvic-regular">
-                            <a href="tel:+6281245463322" class="hover:underline block">+62 812-4546-3322</a>
-                            <a href="tel:+6281147333322" class="hover:underline block">+62 811-4733-332</a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-slate-400 font-bold uppercase mb-2 cabin">EMAIL</h3>
-                        <a href="mailto:ambisigo@gmail.com" class="hover:underline livvic-regular">ambisigo@gmail.com</a>
-                    </div>
-
-                    <div class="mt-[6vh]">
-                        <h3 class="text-slate-400 font-bold uppercase mb-2 cabin">ADDRESS</h3>
-                        <p class="leading-relaxed livvic-regular">
-                            Jl. Poros Gunung Lompo Battang Lembang Bu'ne Kel. Cikoro<br />
-                            Kec. Tompobulu / Perumahan Borong Loe Permai<br />
-                            Lr. Bonto Baddo, Jln. Porosu Malino Bontoramba Kec. Somba Opu<br />
-                            kab. Gowa, Sulawesi Selatan, Indonesia.
-                        </p>
-                    </div>
-                </address>
+              <h3 class="text-slate-400 font-bold uppercase mb-2 cabin">
+                EMAIL
+              </h3>
+              <a
+                href="mailto:ambisigo@gmail.com"
+                class="hover:underline livvic-regular"
+                >ambisigo@gmail.com</a
+              >
             </div>
 
-            <div class="place-self-center text-center mb-[11vh]">
-                <img loading="lazy" src="assets/img-ceo.png" alt="Abdul Hamid B.SS.SE - Director of ATIA"
-                    class="w-full max-w-md mx-auto mb-4" />
-                <div class="text-xl md:text-2xl poppins-bold">Abdul Hamid B.SS.SE</div>
-                <div class="text-lg md:text-xl poppins-regular">DIREKTUR ATIA</div>
+            <div class="mt-[6vh]">
+              <h3 class="text-slate-400 font-bold uppercase mb-2 cabin">
+                ADDRESS
+              </h3>
+              <p class="leading-relaxed livvic-regular">
+                Jl. Poros Gunung Lompo Battang Lembang Bu'ne Kel. Cikoro<br />
+                Kec. Tompobulu / Perumahan Borong Loe Permai<br />
+                Lr. Bonto Baddo, Jln. Porosu Malino Bontoramba Kec. Somba Opu<br />
+                kab. Gowa, Sulawesi Selatan, Indonesia.
+              </p>
             </div>
-        </section>
+          </address>
+        </div>
 
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5806.8315281987325!2d119.48619275033043!3d-5.2364469463329115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee1834f0e3ac3%3A0x293093997dfe572e!2sPerumahan%20Bumi%20Borongloe%20Permai!5e0!3m2!1sen!2sid!4v1737613127829!5m2!1sen!2sid"
-            width="w-full" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="place-self-center text-center mb-[11vh]">
+          <img
+            loading="lazy"
+            src="assets/img-ceo.png"
+            alt="Abdul Hamid B.SS.SE - Director of ATIA"
+            class="w-full max-w-md mx-auto mb-4"
+          />
+          <div class="text-xl md:text-2xl poppins-bold">
+            Abdul Hamid B.SS.SE
+          </div>
+          <div class="text-lg md:text-xl poppins-regular">DIREKTUR ATIA</div>
+        </div>
+      </section>
 
-        <!-- Map Section
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5806.8315281987325!2d119.48619275033043!3d-5.2364469463329115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee1834f0e3ac3%3A0x293093997dfe572e!2sPerumahan%20Bumi%20Borongloe%20Permai!5e0!3m2!1sen!2sid!4v1737613127829!5m2!1sen!2sid"
+        width="w-full"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+
+      <!-- Map Section
         <section class="py-16 px-4 md:px-8 bg-[#6D8C54]">
             <div class="max-w-7xl mx-auto">
                 <h2 class="text-3xl md:text-5xl font-bold text-white mb-12">
@@ -333,32 +514,42 @@
             </div>
         </section> -->
 
-        <!-- Footer -->
-        <footer class="mt-12 text-white">
-            <div class="grid grid-cols-3 gap-8 p-4 md:p-12">
-                <div class="col-span-2">
-                    <div class="text-2xl mb-4 adamina-regular">ATIA</div>
-                    <p class="mb-6 poppins-regular">Usaha Supplier, Pengolahan dan Pemasaran Hasil Produksi dan Olahan
-                        Pertanian, Perkebunan, Peternakan, Perikanan dan Kehutanan.</p>
-                    <hr class="border-white/20 my-6" />
-                    <div class="flex gap-6">
-                        <a href="#" aria-label="Facebook"><img src="assets/icon-fb.png" alt="" class="w-6 h-6" /></a>
-                        <a href="#" aria-label="Twitter"><img src="assets/icon-twt.png" alt="" class="w-6 h-6" /></a>
-                        <a href="#" aria-label="Youtube"><img src="assets/icon-yt.png" alt="" class="w-6 h-6" /></a>
-                        <a href="#" aria-label="Instagram"><img src="assets/icon-ig.png" alt="" class="w-6 h-6" /></a>
-                    </div>
-                </div>
+      <!-- Footer -->
+      <footer class="mt-12 text-white">
+        <div class="grid grid-cols-3 gap-8 p-4 md:p-12">
+          <div class="col-span-2">
+            <div class="text-2xl mb-4 adamina-regular">ATIA</div>
+            <p class="mb-6 poppins-regular">
+              Usaha Supplier, Pengolahan dan Pemasaran Hasil Produksi dan Olahan
+              Pertanian, Perkebunan, Peternakan, Perikanan dan Kehutanan.
+            </p>
+            <hr class="border-white/20 my-6" />
+            <div class="flex gap-6">
+              <a href="#" aria-label="Facebook"
+                ><img src="assets/icon-fb.png" alt="" class="w-6 h-6"
+              /></a>
+              <a href="#" aria-label="Twitter"
+                ><img src="assets/icon-twt.png" alt="" class="w-6 h-6"
+              /></a>
+              <a href="#" aria-label="Youtube"
+                ><img src="assets/icon-yt.png" alt="" class="w-6 h-6"
+              /></a>
+              <a href="#" aria-label="Instagram"
+                ><img src="assets/icon-ig.png" alt="" class="w-6 h-6"
+              /></a>
+            </div>
+          </div>
 
-                <div class="place-self-center">
-                    <h3 class="text-xl livvic-semibold mb-6">Link</h3>
-                    <ul class="space-y-4 poppins-regular">
-                        <li><a href="#profile" class="hover:underline">Profil</a></li>
-                        <li><a href="#vision" class="hover:underline">Visi & Misi</a></li>
-                        <li><a href="#products" class="hover:underline">Produk</a></li>
-                        <li><a href="#contact" class="hover:underline">Kontak</a></li>
-                    </ul>
-                </div>
-                <!-- 
+          <div class="place-self-center">
+            <h3 class="text-xl livvic-semibold mb-6">Link</h3>
+            <ul class="space-y-4 poppins-regular">
+              <li><a href="#profile" class="hover:underline">Profil</a></li>
+              <li><a href="#vision" class="hover:underline">Visi & Misi</a></li>
+              <li><a href="#products" class="hover:underline">Produk</a></li>
+              <li><a href="#contact" class="hover:underline">Kontak</a></li>
+            </ul>
+          </div>
+          <!-- 
                 <div>
                     <h3 class="text-xl font-semibold mb-6">Follow Us</h3>
                     <p class="mb-6">Dapatkan informasi terbaru dari kami melalui email.</p>
@@ -372,49 +563,65 @@
                         </button>
                     </form>
                 </div> -->
-            </div>
+        </div>
 
-            <div class="bg-[#6D8C54] p-4 md:p-8">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p>Copyright ©ATIA. All Right Reserved.</p>
-                    <div class="flex gap-6">
-                        <a href="#terms" class="hover:underline">Terms & Conditions</a>
-                        <a href="#privacy" class="hover:underline">Privacy Policy</a>
-                    </div>
-                </div>
+        <div class="bg-[#6D8C54] p-4 md:p-8">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center gap-4"
+          >
+            <p>Copyright ©ATIA. All Right Reserved.</p>
+            <div class="flex gap-6">
+              <a href="#terms" class="hover:underline">Terms & Conditions</a>
+              <a href="#privacy" class="hover:underline">Privacy Policy</a>
             </div>
-        </footer>
+          </div>
+        </div>
+      </footer>
     </div>
     <script>
-        const carousel = document.getElementById('product-carousel');
-        let isDragging = false;
-        let startX, scrollLeft, startScrollLeft;
+      const carousel = document.getElementById("product-carousel");
+      let isDragging = false;
+      let startX, scrollLeft, startScrollLeft;
 
-        carousel.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.pageX - carousel.offsetLeft;
-            startScrollLeft = carousel.scrollLeft;
-            carousel.classList.add('active');
-        });
+      carousel.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.pageX - carousel.offsetLeft;
+        startScrollLeft = carousel.scrollLeft;
+        carousel.classList.add("active");
+      });
 
-        carousel.addEventListener('mouseleave', () => {
-            isDragging = false;
-            carousel.classList.remove('active');
-        });
+      carousel.addEventListener("mouseleave", () => {
+        isDragging = false;
+        carousel.classList.remove("active");
+      });
 
-        carousel.addEventListener('mouseup', () => {
-            isDragging = false;
-            carousel.classList.remove('active');
-        });
+      carousel.addEventListener("mouseup", () => {
+        isDragging = false;
+        carousel.classList.remove("active");
+      });
 
-        carousel.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - carousel.offsetLeft;
-            const walk = (x - startX) * 2;
-            carousel.scrollLeft = startScrollLeft - walk;
-        });
+      carousel.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.scrollLeft = startScrollLeft - walk;
+      });
+
+      
+const video = document.getElementById('video');
+const playButton = document.getElementById('playButton');
+
+playButton.addEventListener('click', () => {
+  if (video.paused) {
+    video.play();
+    playButton.style.display = 'none';
+  } else {
+    video.pause();
+    playButton.style.display = 'block';
+  }
+});
+
     </script>
-</body>
-
+  </body>
 </html>
